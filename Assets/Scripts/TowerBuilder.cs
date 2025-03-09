@@ -5,14 +5,13 @@ using UnityEngine;
 public class TowerBuilder : MonoBehaviour
 {
     public Transform cursor;
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+    
     void Update()
     {
-        
+        var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out RaycastHit hit))
+        {
+            cursor.position = hit.point;
+        }
     }
 }
