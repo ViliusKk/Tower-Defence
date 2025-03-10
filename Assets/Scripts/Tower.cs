@@ -22,12 +22,12 @@ public class Tower : MonoBehaviour
         bullet.GetComponent<Bullet>().target = target.transform;
     }
 
-    void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.transform.CompareTag("Enemy")) enemies.Add(other.gameObject);
     }
     
-    void OnTriggerExit(Collider other)
+    private void OnTriggerExit(Collider other)
     {
         if (other.transform.CompareTag("Enemy")) enemies.Remove(other.gameObject);
     }
