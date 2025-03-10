@@ -13,12 +13,4 @@ public class Tower : MonoBehaviour
     {
         
     }
-
-    void OnTriggerStay(Collider other)
-    {
-        if (other.CompareTag("Enemy"))
-        {
-            print("good");
-        }
-    }
 }
