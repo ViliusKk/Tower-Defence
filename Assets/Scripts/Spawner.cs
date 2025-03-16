@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public GameObject prefab;
+    public int count = 10;
+    public float cooldown = 0.5f;
     void Start()
     {
-        
+        StartCoroutine(Spawn());
     }
 
-    // Update is called once per frame
-    void Update()
+    IEnumerator Spawn()
     {
-        
+        for (int i = 0; i < count; i++)
+        {
+            Instantiate(prefab, transform.position, Quaternion.identity);
+            yield return new WaitForSeconds(cooldown);
+        }
     }
 }

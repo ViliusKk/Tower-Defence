@@ -268,6 +268,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 269648506}
+  - component: {fileID: 269648507}
   m_Layer: 0
   m_Name: Spawner
   m_TagString: Untagged
@@ -290,6 +291,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &269648507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 269648505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b931c88f1c3694739acb358b076d3d38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 6907333056344693980, guid: 74e0a6d34e3c14ca9aed83735dc959ac, type: 3}
+  count: 10
+  cooldown: 2
 --- !u!1 &327170365
 GameObject:
   m_ObjectHideFlags: 0
