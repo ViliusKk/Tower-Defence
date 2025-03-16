@@ -1,18 +1,31 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private NavMeshAgent agent;
+    private int targetIndex;
+    private bool endPointReached = false;
     void Start()
     {
-        
+        agent = GetComponent<NavMeshAgent>();
     }
-
-    // Update is called once per frame
     void Update()
     {
-        
+        if (!endPointReached)
+        {
+            agent.SetDestination(PathScript.instance.waypoints[targetIndex].position);
+                    
+            var distance = Vector3.Distance(transform.position, PathScript.instance.waypoints[targetIndex].position);
+
+            if (distance < 1.5f)
+            {
+                targetIndex++;
+                if (targetIndex >= PathScript.instance.waypoints.Count)
+                {
+                    endPointReached = true;
+                }
+            }
+        }
     }
 }
