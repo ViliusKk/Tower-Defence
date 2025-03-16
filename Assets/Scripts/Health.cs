@@ -18,7 +18,7 @@ public class Health : MonoBehaviour
     {
         health -= damage;
         health = Mathf.Clamp(health, 0, maxHealth);
-        OnHealthChanged?.Invoke(health, maxHealth);
+        OnHealthChanged.Invoke(health, maxHealth);
 
         if (health == 0)
         {
