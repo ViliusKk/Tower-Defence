@@ -285,7 +285,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &238459223305630532
 RectTransform:
   m_ObjectHideFlags: 0
@@ -564,8 +564,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75745792033f7458c8af9e2587d2fdfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradeButton: {fileID: 8076230820359180792}
-  upgrades: []
+  upgradeCanvas: {fileID: 8076230820359180792}
+  upgrades:
+  - {fileID: 0}
+  - {fileID: 0}
   firePoint: {fileID: 6242460055219326417}
   bulletPrefab: {fileID: 6150079853913730630, guid: 398ed7da0359342ac92cb84321f5196c,
     type: 3}

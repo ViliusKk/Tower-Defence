@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: FastTower
   m_EditorClassIdentifier: 
   cost: 100
-  cooldown: 1
+  cooldown: 0.2
   towerPrefab: {fileID: 0}
   bulletPrefab: {fileID: 0}
   icon: {fileID: 0}

@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using Unity.Mathematics;
+using System.Collections;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -16,21 +16,27 @@ public class Tower : MonoBehaviour
     private int currentUpgrade = 0;
     void Start()
     {
-        InvokeRepeating("Fire", 0, cooldown);
+        //InvokeRepeating("Fire", 0, cooldown);
+        StartCoroutine(Fire());
     }
 
     void Update()
     {
-        upgradeCanvas.SetActive(Player.instance.Money >= upgrades[currentUpgrade].cost && currentUpgrade < upgrades.Count);
+        upgradeCanvas.SetActive(currentUpgrade < upgrades.Count && Player.instance.Money >= upgrades[currentUpgrade].cost);
     }
 
-    void Fire()
+    IEnumerator Fire()
     {
-        CleanTargets();
-        if (enemies.Count == 0) return;
-        var target = enemies[Random.Range(0, enemies.Count)];
-        var bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-        bullet.GetComponent<Bullet>().target = target.transform;
+        while (true)
+        {
+            CleanTargets();
+            if (enemies.Count == 0) yield return new WaitForSeconds(cooldown);
+            var target = enemies[Random.Range(0, enemies.Count)];
+            var bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+            bullet.GetComponent<Bullet>().target = target.transform;
+
+            yield return new WaitForSeconds(cooldown);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -62,7 +68,7 @@ public class Tower : MonoBehaviour
             
             Player.instance.Money -= upgrades[currentUpgrade].cost;
             currentUpgrade++;
-            currentUpgrade = Mathf.Clamp(currentUpgrade, 0, upgrades.Count-1);
+            currentUpgrade = Mathf.Clamp(currentUpgrade, 0, upgrades.Count);
         }
     }
 }
