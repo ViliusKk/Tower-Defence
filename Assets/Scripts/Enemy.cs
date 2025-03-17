@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.AI;
-using Quaternion = System.Numerics.Quaternion;
 
 public class Enemy : MonoBehaviour
 {
@@ -36,6 +35,6 @@ public class Enemy : MonoBehaviour
     public void DropLoot()
     {
         Player.instance.Money += Random.Range(minLoot, maxLoot);
-        Instantiate(lootVfx, transform.position, UnityEngine.Quaternion.identity);
+        Instantiate(lootVfx, transform.position, Quaternion.identity);
     }
 }

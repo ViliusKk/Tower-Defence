@@ -1,8 +1,11 @@
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Tower : MonoBehaviour
 {
+    public GameObject upgradeCanvas;
     public List<TowerUpgrade> upgrades;
     public Transform firePoint;
     public GameObject bulletPrefab;
@@ -14,6 +17,11 @@ public class Tower : MonoBehaviour
     void Start()
     {
         InvokeRepeating("Fire", 0, cooldown);
+    }
+
+    void Update()
+    {
+        upgradeCanvas.SetActive(Player.instance.Money >= upgrades[currentUpgrade].cost && currentUpgrade < upgrades.Count);
     }
 
     void Fire()
@@ -49,10 +57,12 @@ public class Tower : MonoBehaviour
             if (upgrades[currentUpgrade].towerPrefab != null)
             {
                 Instantiate(upgrades[currentUpgrade].towerPrefab, transform.position, Quaternion.identity);
+                Destroy(gameObject);
             }
             
             Player.instance.Money -= upgrades[currentUpgrade].cost;
             currentUpgrade++;
+            currentUpgrade = Mathf.Clamp(currentUpgrade, 0, upgrades.Count-1);
         }
     }
 }
