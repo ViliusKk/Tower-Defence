@@ -8,9 +8,8 @@ public class Bullet : MonoBehaviour
     
     void Update()
     {
-        if (target == null) return;
+        if (target != null) transform.LookAt(target);
         
-        transform.LookAt(target);
         transform.position += transform.forward * speed * Time.deltaTime;
     }
 

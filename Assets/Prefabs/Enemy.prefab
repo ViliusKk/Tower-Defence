@@ -139,7 +139,7 @@ MonoBehaviour:
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
-  destroyOnDeath: 0
+  destroyOnDeath: 1
 --- !u!54 &5861106108446330940
 Rigidbody:
   m_ObjectHideFlags: 0

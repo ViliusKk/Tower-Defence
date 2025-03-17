@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class TowerBuilder : MonoBehaviour
 {
-    public LayerMask groundLayer;
+    public int towerPrice = 20;
     public Transform cursor;
     public GameObject towerPrefab;
     public Color canBuildColor = Color.green;
@@ -17,7 +17,7 @@ public class TowerBuilder : MonoBehaviour
         {
             cursor.position = hit.point;
             
-            canBuild = hit.transform.CompareTag("Ground");
+            canBuild = hit.transform.CompareTag("Ground") && Player.instance.Money >= towerPrice;
             
             if(canBuild) cursor.GetComponent<Renderer>().material.color = canBuildColor;
             else cursor.GetComponent<Renderer>().material.color = noBuildColor;
@@ -25,6 +25,7 @@ public class TowerBuilder : MonoBehaviour
             if (Input.GetMouseButtonDown(0) && canBuild)
             {
                 Instantiate(towerPrefab, cursor.position, cursor.rotation);
+                Player.instance.Money -= towerPrice;
             }
         }
     }
