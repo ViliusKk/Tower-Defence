@@ -138,7 +138,19 @@ MonoBehaviour:
       m_Calls: []
   OnDeath:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3996260880062206215}
+        m_TargetAssemblyTypeName: Enemy, Assembly-CSharp
+        m_MethodName: DropLoot
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   destroyOnDeath: 1
 --- !u!54 &5861106108446330940
 Rigidbody:
@@ -179,6 +191,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a84d552d70094f19921fd1cc5ea1f8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lootVfx: {fileID: 1217722614922420167, guid: c1116ce20af35479994953088eca32d1, type: 3}
+  minLoot: 10
+  maxLoot: 20
 --- !u!195 &1077329548844208470
 NavMeshAgent:
   m_ObjectHideFlags: 0

@@ -1,8 +1,12 @@
 using UnityEngine;
 using UnityEngine.AI;
+using Quaternion = System.Numerics.Quaternion;
 
 public class Enemy : MonoBehaviour
 {
+    public GameObject lootVfx;
+    public int minLoot = 10;
+    public int maxLoot = 25;
     private NavMeshAgent agent;
     private int targetIndex;
     private bool endPointReached = false;
@@ -27,5 +31,11 @@ public class Enemy : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void DropLoot()
+    {
+        Player.instance.Money += Random.Range(minLoot, maxLoot);
+        Instantiate(lootVfx, transform.position, UnityEngine.Quaternion.identity);
     }
 }
